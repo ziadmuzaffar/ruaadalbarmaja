@@ -1,0 +1,314 @@
+/************ Root ************/
+:root {
+    --primary: #755bb4;
+}
+
+/************ Font ************/
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../assets/fonts/Cairo-Bold.ttf');
+}
+
+/************ Global ************/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    direction: rtl;
+    font-family: 'Cairo';
+}
+
+ul {
+    list-style: none;
+}
+
+ul,
+p,
+h1,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/************ Nab Bar ************/
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 0 5px var(--primary);
+    padding: 5px 0;
+}
+
+.navbar .navbar-brand img {
+    height: 40px;
+}
+
+.navbar .navbar-toggler {
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    font-size: 25px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    color: var(--primary);
+}
+
+/************ Landing ************/
+.landing {
+    text-align: center;
+    background-color: var(--primary);
+    padding: 20px 0;
+    color: #fff;
+    padding: 20px 0;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing p {
+    font-size: 17px;
+    margin-top: 20px;
+    line-height: 2;
+}
+
+/************ Landing Title ************/
+.landing-title {
+    background-color: var(--primary);
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.landing-title p {
+    font-size: 20px;
+    margin-top: 20px;
+    line-height: 2;
+}
+
+/************ Features ************/
+section {
+    padding: 50px 0;
+}
+
+section:nth-child(even) {
+    background-color: #eee;
+}
+
+section > h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 50px;
+}
+
+/************ Features ************/
+.features .feature {
+    padding: 10px;
+    text-align: center;
+}
+
+.features .feature i {
+    color: grey;
+    font-size: 50px;
+}
+
+.features .feature h3 {
+    font-size: 20px;
+    color: var(--primary);
+    margin: 10px 0;
+}
+
+.features .feature p {
+    color: grey;
+    line-height: 2;
+    font-size: 17px;
+}
+
+/************ Tracks ************/
+.tracks .track {
+    padding: 10px;
+    text-align: center;
+    background-color: var(--primary);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.tracks .track i {
+    color: #fff;
+    font-size: 50px;
+}
+
+.tracks .track a {
+    color: #fff;
+    display: block;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/************ Courses ************/
+.courses .course {
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.courses .course img {
+    width: 100%;
+}
+
+.courses .course div {
+    padding: 10px;
+    text-align: end;
+}
+
+.courses .course div .course-title {
+    font-size: 20px;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.courses .course div .course-track {
+    font-size: 17px;
+    color: grey;
+}
+
+.courses .course div a {
+    display: block;
+}
+
+/************ Lessons ************/
+.lessons .lesson {
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lessons .lesson a {
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.lessons .lesson div {
+    border-top: 2px solid #ccc;
+    padding: 10px 0;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lessons .lesson div span:first-child {
+    position: relative;
+    z-index: 2;
+    color: #000;
+    font-size: 20px;
+}
+
+.lessons .lesson div span:first-child::before {
+    content: '';
+    background-color: #755bb473;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 5px 20px;
+}
+
+.lessons .lesson div span:last-child {
+    background-color: #fff;
+    color: #333;
+    padding: 0 5px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-size: 17px;
+}
+
+/************ Lessons Show ************/
+.lessons-show .lesson {
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.lessons-show .lesson.disabled {
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.lessons-show .lesson.disabled::before {
+    content: 'قريبا';
+    background-color: var(--primary);
+    color: #fff;
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    rotate: -45deg;
+}
+
+.lessons-show .lesson i {
+    color: var(--primary);
+    font-size: 70px;
+}
+
+.lessons-show .lesson span {
+    color: var(--primary);
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/************ Statistics ************/
+.statistics .statistic {
+    background-color: var(--primary);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.statistics .statistic i {
+    font-size: 30px;
+}
+
+.statistics .statistic p {
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+.statistics .statistic span {
+    font-size: 20px;
+}
+
+/************ Footer ************/
+.footer {
+    letter-spacing: 1px;
+    background-color: var(--primary);
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.footer,
+.footer a {
+    color: #fff;
+}
