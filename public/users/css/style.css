@@ -184,12 +184,9 @@ section > h2 {
 /************ Lessons ************/
 .lessons .lesson {
     background-color: #eee;
+    margin-bottom: 25px;
     padding: 5px 10px;
     border-radius: 5px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .lessons .lesson a {
@@ -198,82 +195,14 @@ section > h2 {
 }
 
 .lessons .lesson div {
-    border-top: 2px solid #ccc;
-    padding: 10px 0;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+    padding-top: 5px;
 }
 
-.lessons .lesson div span:first-child {
-    position: relative;
-    z-index: 2;
-    color: #000;
-    font-size: 20px;
-}
-
-.lessons .lesson div span:first-child::before {
-    content: '';
-    background-color: #755bb473;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    border-radius: 5px 20px;
-}
-
-.lessons .lesson div span:last-child {
-    background-color: #fff;
+.lessons .lesson div span {
     color: #333;
-    padding: 0 5px;
-    border-radius: 5px;
-    letter-spacing: 1px;
     font-size: 17px;
-}
-
-/************ Lessons Show ************/
-.lessons-show .lesson {
-    padding: 10px;
-    background-color: #eee;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.lessons-show .lesson.disabled {
-    position: relative;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.lessons-show .lesson.disabled::before {
-    content: 'قريبا';
-    background-color: var(--primary);
-    color: #fff;
-    font-size: 20px;
-    padding: 5px 20px;
-    border-radius: 5px;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    rotate: -45deg;
-}
-
-.lessons-show .lesson i {
-    color: var(--primary);
-    font-size: 70px;
-}
-
-.lessons-show .lesson span {
-    color: var(--primary);
-    margin-top: 10px;
-    font-size: 20px;
 }
 
 /************ Statistics ************/

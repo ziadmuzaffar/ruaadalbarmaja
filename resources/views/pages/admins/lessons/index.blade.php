@@ -47,11 +47,18 @@
                     {{------------ Body ------------}}
                     <div class="card-body">
                         {{------------ Icon ------------}}
-                        <i class="fa fa-clipboard fa-fw"></i>
+                        <div class="card-icon">
+                            <i class="fa fa-clipboard fa-fw"></i>
+                            <span>{{$lesson->ordering}}</span>
+                        </div>
                         {{------------ Title ------------}}
                         <h5 class="card-title">
                             {{$lesson->name}}
                         </h5> {{-- Title --}}
+                        {{------------ Text ------------}}
+                        <p class="card-text">
+                            {{$lesson->course->name}}
+                        </p> {{-- Text --}}
                     </div> {{-- Body --}}
                 </div> {{-- Card --}}
             </div>  {{-- Track --}}

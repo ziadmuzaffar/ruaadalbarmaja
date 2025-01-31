@@ -319,9 +319,21 @@ form button {
     text-align: center;
 }
 
+.card .card-body .card-icon {
+    position: relative;
+}
+
 .card .card-body i {
     color: gray;
     font-size: 50px;
+}
+
+.card .card-body .card-icon span {
+    position: absolute;
+    top: 20px;
+    left: 48.5%;
+    color: #fff;
+    font-size: 20px;
 }
 
 .card .card-body img {
