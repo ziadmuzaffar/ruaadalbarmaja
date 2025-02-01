@@ -7,10 +7,10 @@
         {{------------ Meta ------------}}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {{------------ CSS ------------}}
-        <link rel="stylesheet" href="{{asset('public/assets/lib/normalize_v8.0.1.css')}}" />
-        <link rel="stylesheet" href="{{asset('public/assets/lib/bootstrap.min.css')}}" />
-        <link rel="stylesheet" href="{{asset('public/assets/lib/fontawesome-free-6.3.0.css')}}" />
-        <link rel="stylesheet" href="{{asset('public/users/css/style.css')}}" />
+        <link rel="stylesheet" href="{{asset('public/assets/lib/normalize.css?ver=8.0.1')}}" />
+        <link rel="stylesheet" href="{{asset('public/assets/lib/bootstrap.min.css?ver=5.3.0')}}" />
+        <link rel="stylesheet" href="{{asset('public/assets/lib/all.min.css?ver=6.3.0')}}" />
+        <link rel="stylesheet" href="{{asset('public/users/css/style.css?ver=0.0.1')}}" />
     </head>
     <body>
         {{------------ Navbar ------------}}
@@ -68,8 +68,8 @@
                 © {{date('Y')}}
             </p>
         </footer> {{-- Footer --}}
-        <script src="{{asset('public/assets/lib/jquery_v3.6.3.js')}}"></script>
-        <script src="{{asset('public/assets/lib/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('public/users/js/style.js')}}"></script>
+        <script src="{{asset('public/assets/lib/jquery.min.js?ver=3.6.3')}}"></script>
+        <script src="{{asset('public/assets/lib/bootstrap.bundle.min.js?ver=5.3.3')}}"></script>
+        <script src="{{asset('public/users/js/style.js?ver=0.0.1')}}"></script>
     </body>
 </html>

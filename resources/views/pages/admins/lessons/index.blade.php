@@ -46,11 +46,7 @@
                     </div> {{-- Head --}}
                     {{------------ Body ------------}}
                     <div class="card-body">
-                        {{------------ Icon ------------}}
-                        <div class="card-icon">
-                            <i class="fa fa-clipboard fa-fw"></i>
-                            <span>{{$lesson->ordering}}</span>
-                        </div>
+                        <i>{{$lesson->ordering}}</i>
                         {{------------ Title ------------}}
                         <h5 class="card-title">
                             {{$lesson->name}}

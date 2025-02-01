@@ -17,7 +17,3 @@ Route::controller(CourseController::class)->group(function () {
     Route::get('courses', 'index')->name('courses.index');
     Route::get('courses/show/{id}', 'show')->name('courses.show');
 });
-
-Route::controller(LessonController::class)->group(function () {
-    Route::get('lessons/show/{id}', 'show')->name('lessons.show');
-});
