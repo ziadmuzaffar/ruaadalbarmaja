@@ -1,0 +1,60 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # 1. Block access to hidden files and dot-directories (e.g., .env, .git, .svn)
+    RewriteRule "(^|/)\.(?!well-known)" - [F,L]
+
+    # 2. Block direct web access to sensitive project files
+    RewriteRule "^(composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml|README\.md|emails\.txt|\.env.*)$" - [F,L,NC]
+
+    # 3. Block direct web access to internal source directories
+    RewriteRule "^(app|bootstrap|config|database|resources|storage/(logs|framework)|tests|vendor)/" - [F,L,NC]
+
+    # 4. Block common web attacks, path traversal and malicious query strings
+    RewriteCond %{QUERY_STRING} (base64_encode|GLOBALS|_REQUEST|eval\(|<script|select.+from|union.+select) [NC,OR]
+    RewriteCond %{QUERY_STRING} (\.\./|\.\.\\) [NC]
+    RewriteRule .* - [F,L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Double protection: Deny direct access to files with sensitive extensions
+<FilesMatch "^(\.env.*|composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml|\.git.*|emails\.txt|.*\.(log|sqlite|sql|bak|sh|bat|ini|conf))$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# HTTP Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header unset X-Powered-By
+</IfModule>
