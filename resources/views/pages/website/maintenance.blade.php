@@ -666,10 +666,6 @@
         <!-- Footer & Admin Access -->
         <footer class="page-footer">
             <p class="mb-2">جميع الحقوق محفوظة &copy; {{ date('Y') }} {{ $siteName }}</p>
-            <a href="{{ route('admin.login') }}" class="admin-login-link">
-                <i class="fas fa-shield-alt"></i>
-                <span>بوابة دخول الإدارة</span>
-            </a>
         </footer>
     </main>
 
