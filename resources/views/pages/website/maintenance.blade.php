@@ -9,9 +9,13 @@
 
     @php
         $siteName = $company->name ?? 'رواد البرمجة';
-        $siteLogo = !empty($company->logo) ? asset('public/storage/' . $company->logo) : asset('public/storage/logos/gFgrkcJxdSTSIAV3jegc7sRcYbGVZMT5hgKqQeX9.png');
+        $siteLogo = !empty($company->logo)
+            ? asset('public/storage/' . $company->logo)
+            : asset('public/storage/logos/gFgrkcJxdSTSIAV3jegc7sRcYbGVZMT5hgKqQeX9.png');
         $maintenanceTitle = $company->maintenance_title ?: 'الموقع قيد الصيانة والتطوير حالياً';
-        $maintenanceMessage = $company->maintenance_message ?: 'نعمل حالياً على تحديث وتطوير أنظمتنا البرمجية لنقدم لكم تجربة رقمية استثنائية وأكثر تميزاً. سنعود للعمل قريباً جداً!';
+        $maintenanceMessage =
+            $company->maintenance_message ?:
+            'نعمل حالياً على تحديث وتطوير أنظمتنا البرمجية لنقدم لكم تجربة رقمية استثنائية وأكثر تميزاً. سنعود للعمل قريباً جداً!';
         $endsAt = $company->maintenance_ends_at ? $company->maintenance_ends_at->format('Y-m-d\TH:i:s') : null;
     @endphp
 
@@ -23,7 +27,8 @@
     <!-- Google Fonts - Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Local Bootstrap 5 RTL CSS -->
     <link rel="stylesheet" href="{{ asset('public/vendor/bootstrap/css/bootstrap.rtl.min.css') }}">
@@ -99,6 +104,7 @@
             0% {
                 transform: scale(1) translate(0, 0);
             }
+
             100% {
                 transform: scale(1.15) translate(30px, 40px);
             }
@@ -108,7 +114,7 @@
         .tech-grid-overlay {
             position: fixed;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -151,8 +157,13 @@
         }
 
         @keyframes gradientBorder {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
 
         /* Logo Branding */
@@ -218,10 +229,12 @@
                 transform: scale(0.95);
                 box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7);
             }
+
             70% {
                 transform: scale(1);
                 box-shadow: 0 0 0 10px rgba(234, 179, 8, 0);
             }
+
             100% {
                 transform: scale(0.95);
                 box-shadow: 0 0 0 0 rgba(234, 179, 8, 0);
@@ -248,8 +261,15 @@
         }
 
         @keyframes pulseGlow {
-            0% { transform: scale(0.85); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 1; }
+            0% {
+                transform: scale(0.85);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
         }
 
         .gear-icon {
@@ -271,12 +291,21 @@
         }
 
         @keyframes spinGear {
-            100% { transform: rotate(360deg); }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(-20deg); }
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(-20deg);
+            }
         }
 
         /* Typography */
@@ -382,9 +411,17 @@
         }
 
         @keyframes shimmerBar {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
+            0% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.8;
+            }
         }
 
         /* Actions & Contact Buttons */
@@ -569,97 +606,113 @@
             </div>
 
             <!-- Main Heading & Message -->
-            <h1 class="hero-title">{{ $maintenanceTitle }}</h1>
+            <h1 class="hero-title" style="color: : #fff;">
+                {{ $maintenanceTitle }}
+            </h1>
             <p class="hero-desc">{{ $maintenanceMessage }}</p>
 
             <!-- Countdown Timer (if configured) -->
-            @if($endsAt)
-            <div class="countdown-wrap">
-                <div class="countdown-title">
-                    <i class="fas fa-clock me-1 text-primary"></i> الموعد التقريبي للعودة للعمل
+            @if ($endsAt)
+                <div class="countdown-wrap">
+                    <div class="countdown-title">
+                        <i class="fas fa-clock me-1 text-primary"></i> الموعد التقريبي للعودة للعمل
+                    </div>
+                    <div class="countdown-grid" id="maintenanceCountdown" data-target="{{ $endsAt }}">
+                        <div class="countdown-box">
+                            <span class="countdown-value" id="daysVal">00</span>
+                            <span class="countdown-label">أيام</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-value" id="hoursVal">00</span>
+                            <span class="countdown-label">ساعات</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-value" id="minutesVal">00</span>
+                            <span class="countdown-label">دقائق</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-value" id="secondsVal">00</span>
+                            <span class="countdown-label">ثواني</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="countdown-grid" id="maintenanceCountdown" data-target="{{ $endsAt }}">
-                    <div class="countdown-box">
-                        <span class="countdown-value" id="daysVal">00</span>
-                        <span class="countdown-label">أيام</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span class="countdown-value" id="hoursVal">00</span>
-                        <span class="countdown-label">ساعات</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span class="countdown-value" id="minutesVal">00</span>
-                        <span class="countdown-label">دقائق</span>
-                    </div>
-                    <div class="countdown-box">
-                        <span class="countdown-value" id="secondsVal">00</span>
-                        <span class="countdown-label">ثواني</span>
-                    </div>
-                </div>
-            </div>
             @else
-            <!-- Progress Indicator fallback -->
-            <div class="progress-fallback">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="fs-13 text-light fw-semibold"><i class="fas fa-sync-alt fa-spin me-1 text-info"></i> جاري استكمال التحديثات وتجهيز الخوادم</span>
-                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">قريباً جداً</span>
+                <!-- Progress Indicator fallback -->
+                <div class="progress-fallback">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="fs-13 text-light fw-semibold"><i
+                                class="fas fa-sync-alt fa-spin me-1 text-info"></i> جاري استكمال التحديثات وتجهيز
+                            الخوادم</span>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle">قريباً
+                            جداً</span>
+                    </div>
+                    <div class="progress-bar-glow">
+                        <div class="progress-bar-fill"></div>
+                    </div>
                 </div>
-                <div class="progress-bar-glow">
-                    <div class="progress-bar-fill"></div>
-                </div>
-            </div>
             @endif
 
             <!-- Contact & Social Actions -->
             <div class="actions-wrap">
-                @if(!empty($company->whatsapp))
-                @php
-                    $cleanWhatsApp = preg_replace('/[^0-9]/', '', $company->whatsapp);
-                @endphp
-                <a href="https://wa.me/{{ $cleanWhatsApp }}?text={{ urlencode('مرحباً، أود الاستفسار بخصوص خدماتكم أثناء فترة صيانة الموقع.') }}" target="_blank" class="btn-contact btn-whatsapp">
-                    <i class="fab fa-whatsapp fs-5"></i>
-                    <span>تواصل معنا عبر واتساب</span>
-                </a>
+                @if (!empty($company->whatsapp))
+                    @php
+                        $cleanWhatsApp = preg_replace('/[^0-9]/', '', $company->whatsapp);
+                    @endphp
+                    <a href="https://wa.me/{{ $cleanWhatsApp }}?text={{ urlencode('مرحباً، أود الاستفسار بخصوص خدماتكم أثناء فترة صيانة الموقع.') }}"
+                        target="_blank" class="btn-contact btn-whatsapp">
+                        <i class="fab fa-whatsapp fs-5"></i>
+                        <span>تواصل معنا عبر واتساب</span>
+                    </a>
                 @endif
 
-                @if(!empty($company->phone))
-                <a href="tel:{{ $company->phone }}" class="btn-contact btn-phone">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>اتصال هاتفي</span>
-                </a>
+                @if (!empty($company->phone))
+                    <a href="tel:{{ $company->phone }}" class="btn-contact btn-phone">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>اتصال هاتفي</span>
+                    </a>
                 @endif
 
-                @if(!empty($company->email))
-                <a href="mailto:{{ $company->email }}" class="btn-contact btn-email">
-                    <i class="fas fa-envelope"></i>
-                    <span>راسلنا عبر البريد</span>
-                </a>
+                @if (!empty($company->email))
+                    <a href="mailto:{{ $company->email }}" class="btn-contact btn-email">
+                        <i class="fas fa-envelope"></i>
+                        <span>راسلنا عبر البريد</span>
+                    </a>
                 @endif
             </div>
 
             <!-- Social Media Channels -->
             @php
-                $hasSocial = !empty($company->facebook_url) || !empty($company->twitter_url) || !empty($company->linkedin_url) || !empty($company->instagram_url) || !empty($company->tiktok_url);
+                $hasSocial =
+                    !empty($company->facebook_url) ||
+                    !empty($company->twitter_url) ||
+                    !empty($company->linkedin_url) ||
+                    !empty($company->instagram_url) ||
+                    !empty($company->tiktok_url);
             @endphp
 
-            @if($hasSocial)
-            <div class="social-strip">
-                @if(!empty($company->linkedin_url))
-                <a href="{{ $company->linkedin_url }}" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                @endif
-                @if(!empty($company->twitter_url))
-                <a href="{{ $company->twitter_url }}" target="_blank" class="social-link" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
-                @endif
-                @if(!empty($company->instagram_url))
-                <a href="{{ $company->instagram_url }}" target="_blank" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                @endif
-                @if(!empty($company->facebook_url))
-                <a href="{{ $company->facebook_url }}" target="_blank" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                @endif
-                @if(!empty($company->tiktok_url))
-                <a href="{{ $company->tiktok_url }}" target="_blank" class="social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                @endif
-            </div>
+            @if ($hasSocial)
+                <div class="social-strip">
+                    @if (!empty($company->linkedin_url))
+                        <a href="{{ $company->linkedin_url }}" target="_blank" class="social-link" title="LinkedIn"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    @endif
+                    @if (!empty($company->twitter_url))
+                        <a href="{{ $company->twitter_url }}" target="_blank" class="social-link"
+                            title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                    @endif
+                    @if (!empty($company->instagram_url))
+                        <a href="{{ $company->instagram_url }}" target="_blank" class="social-link"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                    @endif
+                    @if (!empty($company->facebook_url))
+                        <a href="{{ $company->facebook_url }}" target="_blank" class="social-link"
+                            title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    @endif
+                    @if (!empty($company->tiktok_url))
+                        <a href="{{ $company->tiktok_url }}" target="_blank" class="social-link" title="TikTok"><i
+                                class="fab fa-tiktok"></i></a>
+                    @endif
+                </div>
             @endif
         </div>
 
@@ -699,7 +752,8 @@
                     secondsEl.innerText = '00';
                     const titleEl = document.querySelector('.countdown-title');
                     if (titleEl) {
-                        titleEl.innerHTML = '<span class="text-success fw-bold"><i class="fas fa-check-circle me-1"></i> تم الانتهاء من التحديثات، جاري فتح الموقع قريباً!</span>';
+                        titleEl.innerHTML =
+                            '<span class="text-success fw-bold"><i class="fas fa-check-circle me-1"></i> تم الانتهاء من التحديثات، جاري فتح الموقع قريباً!</span>';
                     }
                     return;
                 }
